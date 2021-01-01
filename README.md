@@ -10,3 +10,9 @@ In order to use it on Linux, please execute commands below:
 apt-get install osslsigncode
 pip3 install pyopenssl
 ```
+
+For Windows:
+Update pip version
+pip3 install pyopenssl
+
+Open Developer Command Prompt for Visual Studio
