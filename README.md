@@ -16,3 +16,5 @@ Update pip version
 pip3 install pyopenssl
 
 Open Developer Command Prompt for Visual Studio
+
+![Screenshot](windbgcon.gif)
