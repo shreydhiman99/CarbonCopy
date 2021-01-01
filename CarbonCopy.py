@@ -60,7 +60,7 @@ def CarbonCopy(host, port, signee, signed):
         try:
             pfx = crypto.PKCS12()
         except AttributeError:
-            pfx = crypto.PKCS12Type()
+            pfx = crypto.PKCS12()
         pfx.set_privatekey(k)
         pfx.set_certificate(cert)
         pfxdata = pfx.export()
@@ -71,14 +71,14 @@ def CarbonCopy(host, port, signee, signed):
             print("[+] Platform is Windows OS...")
             print("[+] Signing %s with signtool.exe..." %(signed))
             shutil.copy(signee, signed)
-            subprocess.check_call(["signtool.exe", "sign", "/v", "/f", PFXFILE,
+            subprocess.check_call(["signtool.exe", "sign", "/v", "/f", str(PFXFILE),
                 "/d", "MozDef Corp", "/tr", TIMESTAMP_URL,
                 "/td", "SHA256", "/fd", "SHA256", signed])
 
         else:
             print("[+] Platform is Linux OS...")
             print("[+] Signing %s with %s using osslsigncode..." %(signee, PFXFILE))
-            args = ("osslsigncode", "sign", "-pkcs12", PFXFILE,
+            args = ("osslsigncode", "sign", "-pkcs12", str(PFXFILE),
                     "-n", "Notepad Benchmark Util", "-i", TIMESTAMP_URL,
                     "-in", signee, "-out", signed)
             print("[+] ", end='', flush=True)
